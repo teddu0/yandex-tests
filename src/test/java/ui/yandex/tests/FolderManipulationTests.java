@@ -1,3 +1,5 @@
+package ui.yandex.tests;
+
 import org.testng.annotations.Test;
 
 public class FolderManipulationTests extends TestBase {

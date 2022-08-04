@@ -1,0 +1,31 @@
+{
+W    "href": "https://cloud-api.yandex.net/v1/disk/resources?path=disk%3A%2FNewFolder",
+    "method": "GET",
+    "templated": false
+}
+{
+    "_embedded": {
+        "sort": "",
+        "items": [
+            
+        ],
+        "limit": 20,
+        "offset": 0,
+#        "path": "disk:/NewFolder",
+        "total": 0
+    },
+    "name": "NewFolder",
+    "exif": {
+	        
+    },
+b    "resource_id": "1670528928:9919707b8150676d3ecea09eee1563b646678d8a8d4f0051f75550961a4e6f6b",
+,    "created": "2022-08-04T17:43:31+00:00",
+-    "modified": "2022-08-04T17:43:31+00:00",
+    "path": "disk:/NewFolder",
+    "comment_ids": {
+k        "private_resource": "1670528928:9919707b8150676d3ecea09eee1563b646678d8a8d4f0051f75550961a4e6f6b",
+i        "public_resource": "1670528928:9919707b8150676d3ecea09eee1563b646678d8a8d4f0051f75550961a4e6f6b"
+    },
+    "type": "dir",
+!    "revision": 1659635011017005
+}

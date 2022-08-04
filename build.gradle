@@ -13,6 +13,9 @@ dependencies {
     implementation 'org.seleniumhq.selenium:selenium-java:4.3.0'
     implementation 'org.testng:testng:7.6.0'
     implementation 'io.github.bonigarcia:webdrivermanager:5.2.0'
+    /*implementation 'io.rest-assured:rest-assured-parent:5.1.1'
+    implementation 'io.rest-assured.examples:rest-assured-itest-java:3.0.2'*/
+    testImplementation 'io.rest-assured:rest-assured:5.1.1'
 }
 
 test {

@@ -13,7 +13,6 @@ public class FolderManipulationTests extends TestBase {
         openFolder();
         deleteSomeFile();
         copiedFileIsPresent("Файл для копирования.jpg");
-        Thread.sleep(3000); // временныый слип для проверки результата
     }
 
 

@@ -2,6 +2,7 @@ package ui.yandex.tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,6 +13,8 @@ import org.testng.annotations.BeforeTest;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
+
+import static org.openqa.selenium.Keys.BACK_SPACE;
 
 public class TestBase {
 
@@ -62,9 +65,9 @@ public class TestBase {
         driver.findElement(By.cssSelector(".confirmation-dialog__button_submit")).click();
     }
 
-    public void openFolder() {
+    public void openSomeObject(By locator) {
         Actions actions = new Actions(driver);
-        WebElement elementLocator = driver.findElement(By.xpath("//div[@aria-label='Просто папка']"));
+        WebElement elementLocator = driver.findElement(locator);
         actions.doubleClick(elementLocator).perform();
     }
 
@@ -77,7 +80,39 @@ public class TestBase {
         WebElement getTitle = driver.findElement(By.xpath("//div[@aria-label='Файл для копирования.jpg']"));
         getTitle.getAttribute("aria-label");
         Assert.assertEquals(getTitle.getAttribute("aria-label"), fileTitle);
-        System.out.println(getTitle.getAttribute("aria-label"));
+    }
+
+    public void createFolder(String nameOfFolder) {
+        ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(0));
+        driver.close();
+        driver.switchTo().window(tabs2.get(1));
+        driver.findElement(By.xpath("//span[@class='create-resource-popup-with-anchor']")).click();
+        driver.findElement(By.xpath("//button[@aria-label='Папку']")).click();
+        WebElement inputClear = driver.findElement(By.xpath("//*[@id=\"nb-1\"]/body/div[3]/div[2]/div/div/div/div/div/div[1]/div/form/span/input"));
+        inputClear.getAttribute("value");
+        if(inputClear.getAttribute("value") != null) {
+            inputClear.sendKeys(Keys.COMMAND, "a");
+            inputClear.sendKeys(BACK_SPACE);
+            inputClear.sendKeys(nameOfFolder);
+            inputClear.sendKeys(Keys.ENTER);
+        }
+        driver.findElement(By.xpath("//button[@aria-label='Отменить выделение']")).click();
+    }
+    public void uploadSomeFile() {
+        By fileInput = (By.xpath("//input[@type='file']"));
+        String filePath = "/Users/konstantinvolkov/Downloads/hello.txt"; // указать путь к вашему файлу
+        driver.findElement(fileInput).sendKeys(filePath);
+    }
+
+    public void checkingFileText(String textIfFile) {
+        ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(1));
+        WebElement textValue = driver.findElement(By.xpath("//p[@class='mg1']"));
+        textValue.getText();
+        Assert.assertEquals(textValue.getText(), textIfFile);
+        driver.switchTo().window(tabs2.get(0));
+        driver.findElement(By.xpath("//button[@aria-label='Отменить выделение']")).click();
     }
 }
 

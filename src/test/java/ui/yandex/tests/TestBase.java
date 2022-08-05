@@ -3,10 +3,14 @@ package ui.yandex.tests;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
@@ -25,9 +29,10 @@ public class TestBase {
 
     @AfterTest
     public void stop() {
+        driver.findElement(By.xpath("//img[@class='user-pic__image']")).click();
+        driver.findElement(By.xpath("//a[@aria-label='Выйти из аккаунта']")).click();
         driver.close();
         driver.quit();
-
     }
 
     public void authorizationByLogin(String login, String password) {
@@ -40,5 +45,38 @@ public class TestBase {
 
     public void goToAuthorizationPage() {
         driver.findElement(By.xpath("//div[@class='desk-notif-card__login-new-item-title']")).click();
+    }
+
+    public void goToYandexDrivePage() {
+        driver.findElement(By.xpath("//a[@href='https://disk.yandex.ru/?source=domik-main']")).click();
+    }
+
+    public void copyFolder() {
+        ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(0));
+        driver.close();
+        driver.switchTo().window(tabs2.get(1));
+        driver.findElement(By.xpath("//div[@aria-label='Файл для копирования.jpg']")).click();
+        driver.findElement(By.xpath("//button[@aria-label='Копировать']")).click();
+        driver.findElement(By.xpath("//div[@title='Просто папка']")).click();
+        driver.findElement(By.cssSelector(".confirmation-dialog__button_submit")).click();
+    }
+
+    public void openFolder() {
+        Actions actions = new Actions(driver);
+        WebElement elementLocator = driver.findElement(By.xpath("//div[@aria-label='Просто папка']"));
+        actions.doubleClick(elementLocator).perform();
+    }
+
+    public void deleteSomeFile() {
+        driver.findElement(By.xpath("//div[@aria-label='Новый документ.docx']")).click();
+        driver.findElement(By.xpath("//button[@aria-label='Удалить']")).click();
+    }
+
+    public void copiedFileIsPresent(String fileTitle) {
+        WebElement getTitle = driver.findElement(By.xpath("//div[@aria-label='Файл для копирования.jpg']"));
+        getTitle.getAttribute("aria-label");
+        Assert.assertEquals(getTitle.getAttribute("aria-label"), fileTitle);
+        System.out.println(getTitle.getAttribute("aria-label"));
     }
 }

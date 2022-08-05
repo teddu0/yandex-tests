@@ -8,7 +8,13 @@ public class FolderManipulationTests extends TestBase {
     public void deleteCopiedFileFromFolder() throws InterruptedException {
         goToAuthorizationPage();
         authorizationByLogin("simtestmail", "Simtest");
+        goToYandexDrivePage();
+        copyFolder();
+        openFolder();
+        deleteSomeFile();
+        copiedFileIsPresent("Файл для копирования.jpg");
         Thread.sleep(3000); // временныый слип для проверки результата
-
     }
+
+
 }

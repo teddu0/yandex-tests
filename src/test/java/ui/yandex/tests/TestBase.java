@@ -89,19 +89,17 @@ public class TestBase {
         driver.switchTo().window(tabs2.get(1));
         driver.findElement(By.xpath("//span[@class='create-resource-popup-with-anchor']")).click();
         driver.findElement(By.xpath("//button[@aria-label='Папку']")).click();
-        WebElement inputClear = driver.findElement(By.xpath("//*[@id=\"nb-1\"]/body/div[3]/div[2]/div/div/div/div/div/div[1]/div/form/span/input"));
-        inputClear.getAttribute("value");
-        if(inputClear.getAttribute("value") != null) {
-            inputClear.sendKeys(Keys.COMMAND, "a");
-            inputClear.sendKeys(BACK_SPACE);
-            inputClear.sendKeys(nameOfFolder);
-            inputClear.sendKeys(Keys.ENTER);
+        WebElement fillInput = driver.findElement(By.xpath("//*[@id=\"nb-1\"]/body/div[3]/div[2]/div/div/div/div/div/div[1]/div/form/span/input"));
+        while(fillInput.getAttribute("value") != "") {
+            fillInput.sendKeys(Keys.BACK_SPACE);
         }
+        fillInput.sendKeys(nameOfFolder);
+        fillInput.sendKeys(Keys.ENTER);
         driver.findElement(By.xpath("//button[@aria-label='Отменить выделение']")).click();
     }
     public void uploadSomeFile() {
         By fileInput = (By.xpath("//input[@type='file']"));
-        String filePath = "/Users/konstantinvolkov/Downloads/hello.txt"; // указать путь к вашему файлу
+        String filePath = "C:\\hello.txt"; // перед прогоном вам нужно создать файл hello.txt c текстом "hello" внутри и переместить его на диск C:
         driver.findElement(fileInput).sendKeys(filePath);
     }
 
@@ -119,5 +117,5 @@ public class TestBase {
 /*
 Надеюсь вы дошли до этого комментария :)
 Хочу добавить следующее:
-1. Здесь можно было разгрузить базовый класс (TestBase) путем выделения методов в отдельные классы-помощники, но я не стал этого делать из-за одного теста;
+1. Здесь можно было разгрузить базовый класс (TestBase) путем выделения методов в отдельные классы-помощники, но я не стал этого делать из-за пары тестов;
 2. Можно было обеспечить тесты выполением предусловий (мы же не сможем удалить папку, которой нет в папке). */

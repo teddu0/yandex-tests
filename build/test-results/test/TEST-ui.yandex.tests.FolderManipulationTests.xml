@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ui.yandex.tests.FolderManipulationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-08-05T13:14:10" hostname="MacBook-Air-Aleksandra.local" time="17.896">
+<testsuite name="ui.yandex.tests.FolderManipulationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-08-06T13:23:30" hostname="LOFT" time="13.432">
   <properties/>
-  <testcase name="createFolderAndUploadFileTest" classname="ui.yandex.tests.FolderManipulationTests" time="17.896"/>
+  <testcase name="createFolderAndUploadFileTest" classname="ui.yandex.tests.FolderManipulationTests" time="13.432"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

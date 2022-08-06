@@ -16,7 +16,7 @@ public class FolderManipulationTests extends TestBase {
         copiedFileIsPresent("Файл для копирования.jpg");
     }
 
-    @Test //если успею, то сделаю текст на загрузку файла (задание со звездочкой)
+    @Test //необязательно задание - задание со звездочкой
     public void createFolderAndUploadFileTest() throws InterruptedException {
         goToAuthorizationPage();
         authorizationByLogin("simtestmail", "Simtest");

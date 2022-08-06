@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ui.yandex.tests.FolderManipulationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-08-06T13:23:30" hostname="LOFT" time="13.432">
+<testsuite name="ui.yandex.tests.FolderManipulationTests" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-08-06T13:42:20" hostname="LOFT" time="24.676">
   <properties/>
-  <testcase name="createFolderAndUploadFileTest" classname="ui.yandex.tests.FolderManipulationTests" time="13.432"/>
+  <testcase name="createFolderAndUploadFileTest" classname="ui.yandex.tests.FolderManipulationTests" time="12.25"/>
+  <testcase name="deleteCopiedFileFromFolderTest" classname="ui.yandex.tests.FolderManipulationTests" time="9.154"/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
+  <system-err><![CDATA[Starting ChromeDriver 103.0.5060.134 (8ec6fce403b3feb0869b0732eda8bd95011d333c-refs/branch-heads/5060@{#1262}) on port 62745
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+Aug 06, 2022 4:42:18 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected upstream dialect: W3C
+Aug 06, 2022 4:42:18 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+INFO: Found exact CDP implementation for version 103
+Starting ChromeDriver 103.0.5060.134 (8ec6fce403b3feb0869b0732eda8bd95011d333c-refs/branch-heads/5060@{#1262}) on port 60924
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+Aug 06, 2022 4:42:33 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected upstream dialect: W3C
+Aug 06, 2022 4:42:33 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+INFO: Found exact CDP implementation for version 103
+]]></system-err>
 </testsuite>

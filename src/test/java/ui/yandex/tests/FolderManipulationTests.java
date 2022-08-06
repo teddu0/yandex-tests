@@ -10,8 +10,8 @@ public class FolderManipulationTests extends TestBase {
         goToAuthorizationPage();
         authorizationByLogin("simtestmail", "Simtest");
         goToYandexDrivePage();
-        copyFolder();
-        openSomeObject(By.xpath("//div[@aria-label='Просто папка']"));
+        copyFile();
+        openSomeObject(By.xpath("//div[@aria-label='Новая папка']"));
         deleteSomeFile();
         copiedFileIsPresent("Файл для копирования.jpg");
     }
@@ -28,7 +28,5 @@ public class FolderManipulationTests extends TestBase {
         openSomeObject(By.xpath("//div[@aria-label='hello.txt']"));
         checkingFileText("hello");
     }
-
-
 
 }

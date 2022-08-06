@@ -9,18 +9,18 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-import static org.openqa.selenium.Keys.BACK_SPACE;
-
 public class TestBase {
 
     public WebDriver driver;
 
-    @BeforeTest
+
+    @BeforeMethod(alwaysRun = true)
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
@@ -30,7 +30,7 @@ public class TestBase {
         driver.get("https://yandex.ru/");
     }
 
-    @AfterTest
+    @AfterTest(alwaysRun = true)
     public void stop() {
         driver.findElement(By.xpath("//img[@class='user-pic__image']")).click();
         driver.findElement(By.xpath("//a[@aria-label='Выйти из аккаунта']")).click();
@@ -54,14 +54,14 @@ public class TestBase {
         driver.findElement(By.xpath("//a[@href='https://disk.yandex.ru/?source=domik-main']")).click();
     }
 
-    public void copyFolder() {
+    public void copyFile() {
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(0));
         driver.close();
         driver.switchTo().window(tabs2.get(1));
         driver.findElement(By.xpath("//div[@aria-label='Файл для копирования.jpg']")).click();
         driver.findElement(By.xpath("//button[@aria-label='Копировать']")).click();
-        driver.findElement(By.xpath("//div[@title='Просто папка']")).click();
+        driver.findElement(By.xpath("//div[@title='Новая папка']")).click();
         driver.findElement(By.cssSelector(".confirmation-dialog__button_submit")).click();
     }
 
